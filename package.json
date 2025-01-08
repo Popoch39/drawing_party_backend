@@ -1,0 +1,34 @@
+{
+  "name": "mot_grille_backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Popoch39/mot_grille_backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Popoch39/mot_grille_backend/issues"
+  },
+  "homepage": "https://github.com/Popoch39/mot_grille_backend#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "prisma": "^6.2.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.2.1",
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
