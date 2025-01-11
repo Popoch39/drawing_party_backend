@@ -1,3 +1,4 @@
+import { user } from "@prisma/client";
 import { Router } from "express";
 import passport from "passport";
 
@@ -9,8 +10,11 @@ authRoutes.get(
   "/auth/discord/callback",
   passport.authenticate("discord", { failureRedirect: "/", session: false }),
   (req, res) => {
-    // Retourne le token JWT
-    res.json({ token: (req.user as any).token });
+    console.log(req.user);
+    res.json({
+      token: (req.user as any).token,
+      user: (req.user as any).user as user,
+    });
   },
 );
 

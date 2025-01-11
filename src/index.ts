@@ -4,6 +4,7 @@ import authRoutes from "./routes/authRoutes";
 import passportStrat from "./config/passport";
 import initPassport from "./config/passport";
 import session from "express-session";
+import userRoutes from "./routes/userRoutes";
 
 const port = 3000;
 const app = express();
@@ -23,6 +24,7 @@ app.use(
 initPassport(app);
 
 app.use(authRoutes);
+app.use("/api", userRoutes);
 
 app.get("/", (_, res: Response) => {
   res.send("yo man");
