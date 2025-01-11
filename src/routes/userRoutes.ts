@@ -4,7 +4,7 @@ import prisma from "../db/client";
 
 const userRoutes = Router();
 
-userRoutes.get("/users", verifyToken, async (req: Request, res: Response) => {
+userRoutes.get("/users", verifyToken, async (_: Request, res: Response) => {
   try {
     const users = await prisma.user.findMany();
     res.json({ users });
