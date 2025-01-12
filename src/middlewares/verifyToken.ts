@@ -17,8 +17,7 @@ export function verifyToken(req: Request, res: Response, next: NextFunction) {
         return res.status(403).json({ message: "Invalid token" });
       }
 
-      //@ts-ignore**
-      req.id = (decoded as user).id;
+      req.user = decoded;
       next();
     },
   );

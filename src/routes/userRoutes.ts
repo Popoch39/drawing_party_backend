@@ -4,6 +4,39 @@ import prisma from "../db/client";
 
 const userRoutes = Router();
 
+// get User from jwt
+userRoutes.get(
+  "/user/jwt",
+  verifyToken,
+  async (req: Request, res: Response) => {
+    try {
+      if (!req.user) {
+        res.status(404).json({ error: "could not find user in Request" });
+      }
+
+      console.log("req ", req.user);
+
+      const userId = (req.user as any).userId;
+
+      if (!userId) {
+        res.status(404).json({ error: "could not find this user" });
+      }
+
+      const user = await prisma.user.findUnique({
+        where: {
+          id: userId,
+        },
+      });
+
+      console.log(user);
+
+      res.json({ user });
+    } catch (err) {
+      res.status(500).json({ error: "an error occured" });
+    }
+  },
+);
+
 userRoutes.get("/users", verifyToken, async (_: Request, res: Response) => {
   try {
     const users = await prisma.user.findMany();

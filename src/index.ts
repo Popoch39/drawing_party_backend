@@ -1,14 +1,13 @@
 import express, { Response } from "express";
-import passport from "passport";
 import authRoutes from "./routes/authRoutes";
-import passportStrat from "./config/passport";
 import initPassport from "./config/passport";
 import session from "express-session";
 import userRoutes from "./routes/userRoutes";
+import cors from "cors";
 
-const port = 3000;
+const port = 8084;
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 app.use(
   session({

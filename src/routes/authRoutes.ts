@@ -11,10 +11,9 @@ authRoutes.get(
   passport.authenticate("discord", { failureRedirect: "/", session: false }),
   (req, res) => {
     console.log(req.user);
-    res.json({
-      token: (req.user as any).token,
-      user: (req.user as any).user as user,
-    });
+    res.redirect(
+      `${process.env.FRONT_URL}/login?token=${(req.user as any).token}`,
+    );
   },
 );
 
